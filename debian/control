@@ -1,0 +1,12 @@
+Source: ros-jazzy-depthai-ros-v3
+Section: misc
+Priority: optional
+Maintainer: Matevz Morato <matevz.morato@luxonis.com>
+Build-Depends: debhelper (>= 9.0.0), ros-jazzy-ament-cmake, ros-jazzy-ros-workspace
+Homepage: 
+Standards-Version: 3.9.2
+
+Package: ros-jazzy-depthai-ros-v3
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, ros-jazzy-depthai-bridge-v3, ros-jazzy-depthai-descriptions-v3, ros-jazzy-depthai-examples-v3, ros-jazzy-depthai-filters-v3, ros-jazzy-depthai-ros-driver-v3, ros-jazzy-depthai-ros-msgs-v3, ros-jazzy-depthai-v3, ros-jazzy-ros-workspace
+Description: The depthai_ros_v3 package
