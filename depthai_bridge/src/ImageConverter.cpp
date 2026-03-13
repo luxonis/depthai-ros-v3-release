@@ -1,10 +1,6 @@
 #include "depthai_bridge/ImageConverter.hpp"
 
-#if __has_include("cv_bridge/cv_bridge.hpp")
-    #include "cv_bridge/cv_bridge.hpp"
-#else
-    #include "cv_bridge/cv_bridge.h"
-#endif
+#include "cv_bridge/cv_bridge.hpp"
 #include "depthai/pipeline/datatype/EncodedFrame.hpp"
 #include "depthai_bridge/depthaiUtility.hpp"
 #include "ffmpeg_image_transport_msgs/msg/ffmpeg_packet.hpp"

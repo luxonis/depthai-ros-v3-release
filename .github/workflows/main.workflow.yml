@@ -24,12 +24,14 @@ on:
       - jazzy
       - kilted
 env:
-  ROS_DISTRO: humble
+  ROS_DISTRO: jazzy
 
 jobs:
   clang-format-lint:
     name: ament_clang_format
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-24.04
+    container:
+      image: ubuntu:noble
     strategy:
       fail-fast: false
     steps:
@@ -47,10 +49,12 @@ jobs:
           depthai_examples_v3
           depthai_ros_msgs_v3
           depthai_ros_driver_v3
-          depthai_ros_v3
+          depthai-ros-v3
   linting:
     name: ament_${{ matrix.linter }}
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-24.04
+    container:
+      image: ubuntu:noble
     strategy:
       fail-fast: false 
       matrix:
@@ -68,7 +72,7 @@ jobs:
           depthai_bridge_v3
           depthai_examples_v3
           depthai_ros_msgs_v3
-          depthai_ros_v3
+          depthai-ros-v3
 
   docker-build-amd:
     name: Build and Upload to Docker Hub
@@ -101,7 +105,6 @@ jobs:
             ROS_DISTRO=${{ env.ROS_DISTRO }}
             USE_RVIZ=1
             BUILD_SEQUENTIAL=1
-            DEPTHAI_CORE_REF=v3.2.2-humble.1
           no-cache: true
 
       - name: Build and Push
@@ -111,7 +114,6 @@ jobs:
           build-args: |
             ROS_DISTRO=${{ env.ROS_DISTRO }}
             USE_RVIZ=1
-            DEPTHAI_CORE_REF=v3.2.2-humble.1
           push: ${{ env.PUSH }}
           no-cache: true
           tags: | 
@@ -149,7 +151,6 @@ jobs:
             ROS_DISTRO=${{ env.ROS_DISTRO }}
             USE_RVIZ=1
             BUILD_SEQUENTIAL=1
-            DEPTHAI_CORE_REF=v3.2.2-humble.1
           no-cache: true
 
       - name: Build and Push
@@ -159,7 +160,6 @@ jobs:
           build-args: |
             ROS_DISTRO=${{ env.ROS_DISTRO }}
             USE_RVIZ=1
-            DEPTHAI_CORE_REF=v3.2.2-humble.1
           push: ${{ env.PUSH }}
           no-cache: true
           tags: | 

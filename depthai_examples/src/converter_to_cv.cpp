@@ -1,10 +1,6 @@
 #include <random>
 
-#if __has_include("cv_bridge/cv_bridge.hpp")
-    #include "cv_bridge/cv_bridge.hpp"
-#else
-    #include "cv_bridge/cv_bridge.h"
-#endif
+#include "cv_bridge/cv_bridge.hpp"
 #include "depthai_bridge/ImageConverter.hpp"
 #include "opencv2/core/mat.hpp"
 #include "opencv2/highgui.hpp"

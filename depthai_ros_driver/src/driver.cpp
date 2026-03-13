@@ -7,7 +7,6 @@
 #include "depthai_bridge/TFPublisher.hpp"
 #include "depthai_ros_driver_v3/pipeline/pipeline_generator.hpp"
 #include "diagnostic_msgs/msg/diagnostic_array.hpp"
-#include "rmw/qos_profiles.h"
 
 namespace depthai_ros_driver {
 
@@ -23,17 +22,13 @@ Driver::Driver(const rclcpp::NodeOptions& options) : rclcpp::Node("driver", opti
 
             paramCBHandle = this->add_on_set_parameters_callback(std::bind(&Driver::parameterCB, this, std::placeholders::_1));
             startSrv = this->create_service<Trigger>(
-                "~/start_driver", std::bind(&Driver::startCB, this, std::placeholders::_1, std::placeholders::_2), rmw_qos_profile_services_default, srvGroup);
+                "~/start_driver", std::bind(&Driver::startCB, this, std::placeholders::_1, std::placeholders::_2), rclcpp::ServicesQoS(), srvGroup);
             stopSrv = this->create_service<Trigger>(
-                "~/stop_driver", std::bind(&Driver::stopCB, this, std::placeholders::_1, std::placeholders::_2), rmw_qos_profile_services_default, srvGroup);
-            savePipelineSrv = this->create_service<Trigger>("~/save_pipeline",
-                                                            std::bind(&Driver::savePipelineCB, this, std::placeholders::_1, std::placeholders::_2),
-                                                            rmw_qos_profile_services_default,
-                                                            srvGroup);
-            saveCalibSrv = this->create_service<Trigger>("~/save_calibration",
-                                                         std::bind(&Driver::saveCalibCB, this, std::placeholders::_1, std::placeholders::_2),
-                                                         rmw_qos_profile_services_default,
-                                                         srvGroup);
+                "~/stop_driver", std::bind(&Driver::stopCB, this, std::placeholders::_1, std::placeholders::_2), rclcpp::ServicesQoS(), srvGroup);
+            savePipelineSrv = this->create_service<Trigger>(
+                "~/save_pipeline", std::bind(&Driver::savePipelineCB, this, std::placeholders::_1, std::placeholders::_2), rclcpp::ServicesQoS(), srvGroup);
+            saveCalibSrv = this->create_service<Trigger>(
+                "~/save_calibration", std::bind(&Driver::saveCalibCB, this, std::placeholders::_1, std::placeholders::_2), rclcpp::ServicesQoS(), srvGroup);
 
             diagSub =
                 this->create_subscription<diagnostic_msgs::msg::DiagnosticArray>("/diagnostics", 10, std::bind(&Driver::diagCB, this, std::placeholders::_1));
@@ -239,26 +234,26 @@ void Driver::startDevice() {
                 for(const auto& info : availableDevices) {
                     if(!deviceId.empty() && info.getDeviceId() == deviceId) {
                         RCLCPP_INFO(get_logger(), "Connecting to the device using ID: %s", deviceId.c_str());
-                        if(info.state == X_LINK_UNBOOTED || info.state == X_LINK_BOOTLOADER) {
+                        if(info.state == X_LINK_UNBOOTED || info.state == X_LINK_BOOTLOADER || info.state == X_LINK_GATE) {
                             device = std::make_shared<dai::Device>(info, speed);
                             camRunning = true;
-                        } else if(info.state == X_LINK_BOOTED) {
+                        } else if(info.state == X_LINK_BOOTED || info.state == X_LINK_GATE_BOOTED) {
                             throw std::runtime_error("Device is already booted in different process.");
                         }
                     } else if(!ip.empty() && info.name == ip) {
                         RCLCPP_INFO(get_logger(), "Connecting to the device using ip: %s", ip.c_str());
-                        if(info.state == X_LINK_UNBOOTED || info.state == X_LINK_BOOTLOADER) {
+                        if(info.state == X_LINK_UNBOOTED || info.state == X_LINK_BOOTLOADER || info.state == X_LINK_GATE) {
                             device = std::make_shared<dai::Device>(info);
                             camRunning = true;
-                        } else if(info.state == X_LINK_BOOTED) {
+                        } else if(info.state == X_LINK_BOOTED || info.state == X_LINK_GATE_BOOTED) {
                             throw std::runtime_error("Device is already booted in different process...");
                         }
                     } else if(!usb_id.empty() && info.name == usb_id) {
                         RCLCPP_INFO(get_logger(), "Connecting to the device using USB ID: %s", usb_id.c_str());
-                        if(info.state == X_LINK_UNBOOTED || info.state == X_LINK_BOOTLOADER) {
+                        if(info.state == X_LINK_UNBOOTED || info.state == X_LINK_BOOTLOADER || info.state == X_LINK_GATE) {
                             device = std::make_shared<dai::Device>(info, speed);
                             camRunning = true;
-                        } else if(info.state == X_LINK_BOOTED) {
+                        } else if(info.state == X_LINK_BOOTED || info.state == X_LINK_GATE_BOOTED) {
                             throw std::runtime_error("Device is already booted in different process.");
                         }
                     } else {
