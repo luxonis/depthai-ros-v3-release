@@ -1,0 +1,12 @@
+Source: ros-jazzy-depthai-ros-driver-v3
+Section: misc
+Priority: optional
+Maintainer: Matevz Morato <matevz.morato@luxonis.com>
+Build-Depends: debhelper (>= 9.0.0), ros-jazzy-ament-cmake, ros-jazzy-ament-cmake-auto, ros-jazzy-ament-cmake-python, ros-jazzy-backward-ros, ros-jazzy-camera-calibration, ros-jazzy-camera-info-manager, ros-jazzy-cv-bridge, ros-jazzy-depthai-bridge-v3, ros-jazzy-depthai-descriptions-v3, ros-jazzy-depthai-ros-msgs-v3, ros-jazzy-depthai-v3, ros-jazzy-diagnostic-msgs, ros-jazzy-diagnostic-updater, ros-jazzy-ffmpeg-image-transport-msgs, ros-jazzy-geometry-msgs, ros-jazzy-image-pipeline, ros-jazzy-image-transport, ros-jazzy-image-transport-plugins, ros-jazzy-nav-msgs, ros-jazzy-pluginlib, ros-jazzy-rclcpp, ros-jazzy-rclcpp-components, ros-jazzy-sensor-msgs, ros-jazzy-std-msgs, ros-jazzy-std-srvs, ros-jazzy-tf2-ros, ros-jazzy-vision-msgs, ros-jazzy-ros-workspace
+Homepage: 
+Standards-Version: 3.9.2
+
+Package: ros-jazzy-depthai-ros-driver-v3
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, ros-jazzy-ament-cmake-auto, ros-jazzy-backward-ros, ros-jazzy-camera-calibration, ros-jazzy-camera-info-manager, ros-jazzy-cv-bridge, ros-jazzy-depthai-bridge-v3, ros-jazzy-depthai-descriptions-v3, ros-jazzy-depthai-ros-msgs-v3, ros-jazzy-depthai-v3, ros-jazzy-diagnostic-msgs, ros-jazzy-diagnostic-updater, ros-jazzy-ffmpeg-image-transport-msgs, ros-jazzy-geometry-msgs, ros-jazzy-image-pipeline, ros-jazzy-image-transport, ros-jazzy-image-transport-plugins, ros-jazzy-nav-msgs, ros-jazzy-pluginlib, ros-jazzy-rclcpp, ros-jazzy-rclcpp-components, ros-jazzy-sensor-msgs, ros-jazzy-std-msgs, ros-jazzy-std-srvs, ros-jazzy-tf2-ros, ros-jazzy-vision-msgs, ros-jazzy-ros-workspace
+Description: Depthai ROS Monolithic node.
