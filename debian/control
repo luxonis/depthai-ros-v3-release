@@ -1,0 +1,12 @@
+Source: ros-humble-depthai-filters-v3
+Section: misc
+Priority: optional
+Maintainer: "Matevz Morato" <matevz.morato@luxonis.com>
+Build-Depends: debhelper (>= 9.0.0), libopencv-dev, ros-humble-ament-cmake-auto, ros-humble-cv-bridge, ros-humble-depthai-ros-msgs-v3, ros-humble-image-transport, ros-humble-message-filters, ros-humble-rclcpp, ros-humble-rclcpp-components, ros-humble-sensor-msgs, ros-humble-vision-msgs, ros-humble-visualization-msgs, ros-humble-ros-workspace
+Homepage: https://index.ros.org/p/depthai_filters_v3/#humble
+Standards-Version: 3.9.2
+
+Package: ros-humble-depthai-filters-v3
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, libopencv-dev, ros-humble-cv-bridge, ros-humble-depthai-ros-msgs-v3, ros-humble-image-transport, ros-humble-message-filters, ros-humble-rclcpp, ros-humble-rclcpp-components, ros-humble-sensor-msgs, ros-humble-vision-msgs, ros-humble-visualization-msgs, ros-humble-ros-workspace
+Description: Depthai filters package
