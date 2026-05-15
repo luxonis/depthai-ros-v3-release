@@ -1,0 +1,12 @@
+Source: ros-humble-depthai-examples-v3
+Section: misc
+Priority: optional
+Maintainer: "Matevz Morato" <matevz.morato@luxonis.com>
+Build-Depends: debhelper (>= 9.0.0), libopencv-dev, ros-humble-ament-cmake, ros-humble-backward-ros, ros-humble-camera-info-manager, ros-humble-cv-bridge, ros-humble-depthai-bridge-v3, ros-humble-depthai-descriptions-v3, ros-humble-depthai-ros-msgs-v3, ros-humble-depthai-v3 (>= 3.6.1), ros-humble-foxglove-msgs, ros-humble-image-transport, ros-humble-nav-msgs, ros-humble-rclcpp, ros-humble-ros-environment, ros-humble-rviz-imu-plugin, ros-humble-sensor-msgs, ros-humble-std-msgs, ros-humble-stereo-msgs, ros-humble-vision-msgs, ros-humble-ros-workspace
+Homepage: https://index.ros.org/p/depthai_examples_v3/#humble
+Standards-Version: 3.9.2
+
+Package: ros-humble-depthai-examples-v3
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, libopencv-dev, ros-humble-backward-ros, ros-humble-camera-info-manager, ros-humble-cv-bridge, ros-humble-depth-image-proc, ros-humble-depthai-bridge-v3, ros-humble-depthai-descriptions-v3, ros-humble-depthai-ros-msgs-v3, ros-humble-depthai-v3 (>= 3.6.1), ros-humble-foxglove-msgs, ros-humble-image-transport, ros-humble-nav-msgs, ros-humble-rclcpp, ros-humble-robot-state-publisher, ros-humble-ros-environment, ros-humble-rviz-imu-plugin, ros-humble-sensor-msgs, ros-humble-std-msgs, ros-humble-stereo-msgs, ros-humble-vision-msgs, ros-humble-xacro, ros-humble-ros-workspace
+Description: The depthai_examples_v3 package
