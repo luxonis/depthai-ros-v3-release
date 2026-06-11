@@ -20,15 +20,15 @@ tracks:
     devel_branch: v3_humble
     last_release: v3.2.1-humble
     last_version: 3.2.1
-    name: upstream
+    name: depthai-ros
     patches: null
     release_inc: '1'
     release_repo_url: git@github.com:luxonis/depthai-ros-v3-release.git
-    release_tag: :{ask}
+    release_tag: v:{version}-humble
     ros_distro: humble
     vcs_type: git
     vcs_uri: https://github.com/luxonis/depthai-ros.git
-    version: :{auto}
+    version: 3.3.0
   jazzy:
     actions:
     - bloom-export-upstream :{vcs_local_uri} :{vcs_type} --tag :{release_tag} --display-uri
